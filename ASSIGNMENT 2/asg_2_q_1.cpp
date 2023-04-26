@@ -7,19 +7,24 @@ using namespace std;
 
 bool isPalindrome(string s)
 {
-    int n = s.length();
-    int i = 0;
-    int j = n-1;
+    //Maintain two pointers which will traverse the string the string from start and end each.
+    
+    int n = s.length();//length of given string
+    
+    int i = 0;//pointer from start
+    int j = n-1;//pointer from end
 
-    while(i<=j)
+    while(i<=j)//while both do not cross each other.
     {
-        if(s[i]!=s[j])
+        if(s[i]!=s[j])//just check if any of the two pairs are not equal hence it is not a palindrome.
         {
            return false;
         }
         i++;
         j--;
     }
+    
+    //if the string is traversed cmpletey means all pairs have character and form a palindrome.
     return true;
 }
  
