@@ -27,3 +27,6 @@ int main()
 
     cout << power(n,k);
 }
+
+Time Complexity - O(N)
+    Space Complexity - O(N) (recursive stack space)
