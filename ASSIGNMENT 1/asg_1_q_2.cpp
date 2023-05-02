@@ -40,3 +40,6 @@ int main()
     }
 
 }
+
+Time Complexity - O(N/3) => O(N)
+ Space complexity - O(1)
