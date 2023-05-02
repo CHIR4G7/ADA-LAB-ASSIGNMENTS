@@ -70,3 +70,7 @@ int main()
     }
     
 }
+
+Time Complexity - O(2^N)
+    Space Complexity - O(2^N)
+    //N - number of characters in the string.
