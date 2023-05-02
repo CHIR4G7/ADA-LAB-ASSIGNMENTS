@@ -38,3 +38,7 @@ int main()
 
     cout << numWays(n) << endl;
 }
+
+
+Time Complexity - O(N)
+    Space Complexity - O(N)
