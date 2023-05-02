@@ -6,7 +6,20 @@
 #include <stack>
 using namespace std;
 
-
+void insertAtBottom(stack<int> &st,int a)
+{
+    if(st.size()==0)
+    {
+        st.push(a):
+    }
+    else
+    {
+    int top = st.top();
+    st.pop();
+    insertAtBottom(st,top);
+    st.push(a);
+    }
+}
 
 void reversestack(stack<int> &st)
 {
