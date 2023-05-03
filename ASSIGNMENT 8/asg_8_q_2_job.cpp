@@ -19,7 +19,8 @@ bool cmp(Job j1,Job j2)
 }
 
 int JobsDone(vector<Job> &Jobs)
-{ vector<Job> merged;
+{
+    vector<Job> merged;
     sort(Jobs.begin(), Jobs.end(), cmp);
     int count = 1;
     Job temp = Jobs[0];
