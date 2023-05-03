@@ -19,18 +19,26 @@ bool cmp(Job j1,Job j2)
 }
 
 int JobsDone(vector<Job> &Jobs)
-{
-    sort(Jobs.begin(),Jobs.end(),cmp);
+{ vector<Job> merged;
+    sort(Jobs.begin(), Jobs.end(), cmp);
     int count = 1;
     Job temp = Jobs[0];
-    for(int i=1;i<Jobs.size();i++)
+
+    for (int i = 1; i < Jobs.size(); i++)
     {
-        if(temp.endTime< Jobs[i].startTime)
+        if (Jobs[i].startTime < temp.endTime)
         {
-            count++;
+            temp.endTime = max(temp.endTime,Jobs[i].endTime);
+        }
+        else
+        {
+            merged.push_back(temp);
+            temp = Jobs[i];
         }
     }
-    return count;
+    merged.push_back(temp);
+    int k = merged.size();
+    return k;
 }
  
 int main()
