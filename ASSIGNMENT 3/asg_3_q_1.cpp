@@ -1,76 +1,54 @@
 #include <iostream>
-#include <vector>
-#include <algorithm>
-#include <cmath>
-#include <unordered_map>
-#include <stack>
 using namespace std;
+#include <stack>
 
-void insertAtBottom(stack<int> &st,int a)
+void insertBottom(stack<int> &s, int x)
 {
-    if(st.size()==0)
+    if (s.empty())
     {
-        st.push(a):
+        s.push(x);
     }
     else
     {
-    int top = st.top();
-    st.pop();
-    insertAtBottom(st,top);
-    st.push(a);
+        int a = s.top();
+        s.pop();
+        insertBottom(s, x);
+        s.push(a);
     }
 }
 
-void reversestack(stack<int> &st)
+void reverse(stack<int> &s)
 {
-    //base case - when the stack gets empty we return.
-    if(st.empty()==true)
+    if (!s.empty())
     {
-        return;
+        int x = s.top();
+        s.pop();
+        reverse(s);  // recursive call will continue until the stack is empty.
+        insertBottom(s, x);  //Once the stack is empty, the insertBottom() function will be called repeatedly, starting with the last element popped from the stack.
     }
-    
-    //at every recursive call we store the top elemtn in a variable seperately.
-    int a = st.top();
-    st.pop();
-  
-    //recursicely call until stack gets empty.
-    reversestack(st);
-    
-    //onece its empty when we are returning we will put back the element storedd in the variable and hence the stack would be reversed.
-    st.push(a);
+    return;
 }
 
-
-//print the stack
-void printStack(stack<int> &st)
-{
-     while(st.size()!=0)
-    {
-        cout << st.top();
-        st.pop();
-    }
-}
-
- 
 int main()
 {
     int n;
     cin >> n;
+    stack<int> s;
 
-    //storing elements in a stack.
-    stack<int> st;
-    for(int i=0;i<n;i++)
+    for (int i = 0; i < n; i++)
     {
         int a;
         cin >> a;
-        st.push(a);
+        s.push(a);
     }
-   
-    printStack(st);//before reversing
-    reversestack(st);
-    printStack(st);//after reversing
-   
-}
 
-//TIME COMPLEXITY - O(N)
-//because we are travelling the stack of n elements which will take O(N) and push and pop operations take O(1) time only.
+    reverse(s);
+
+    for (int i = 0; i < n; i++)
+    {
+        cout << s.top() << " ";
+        s.pop();
+    }
+}
+//time complexity: O(n^2)
+    //space complexity: O👎
